@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    password: root123
+    url: jdbc:mysql://localhost:3306/secured
+    username: root
+  security:
+      saml2:
+         relyingparty:
+            registration:
+               nilesh:
+                  signing:
+                     credentials:
+                     -  private-key-location: classpath:nilesh.key
+                        certificate-location: classpath:aws.pem
+                  assertingparty:
+                     singlesignon:
+                        sign-request: false
+                     entity-id: https://portal.sso.us-east-1.amazonaws.com/saml/assertion/NDU3MzYyOTMwNzQ3X2lucy1iYzEyN2M4MzZiODdmNjMw
+                     metadata-uri: classpath:idp.xml
+                     verification: 
+                      credentials:
+                      -  certificate-location: classpath:aws.pem
